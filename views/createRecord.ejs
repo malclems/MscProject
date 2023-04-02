@@ -1,0 +1,155 @@
+<%- include('layout/dashheader') -%>
+
+
+
+  <div class="container">
+
+    <% if(isEdit){ %>
+      <form action="/creaateRecord" method="Post">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Maker</label>
+            <input type="text" class="form-control" id="inputEmail4" name="maker"
+              placeholder="Toyota,Honda,Ford........" value="<%= car.maker %>">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Model</label>
+            <input type="text" class="form-control" name="model" id="inputPassword4" placeholder="Model">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputAddress">Manufacture Year</label>
+          <input type="text" name="manufactureYear" class="form-control" id="inputAddress"
+            placeholder="Enter your only eg: 2004.....">
+        </div>
+        <div class="form-group">
+          <label for="inputAddress2">Milaqe</label>
+          <input type="num" class="form-control" name="mileage" id="inputAddress2" placeholder="milage">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputCity">Engine Displacement</label>
+            <input type="text" name="engineDisplacement" class="form-control" id="inputCity">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="inputState">Engine Power</label>
+            <input type="text" name="enginePower" class="form-control" id="inputZip">
+
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputZip">Body Type</label>
+            <input type="text" name="bodyType" class="form-control" id="inputZip">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputZip">STK Year</label>
+            <input type="text" name="stkYear" class="form-control" id="inputZip">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="inputState">Transmission</label>
+            <select id="inputState" class="form-control" name="transmission">
+              <option selected>Choose...</option>
+              <option value="Manual">Manual</option>
+              <option value="Automatic">Automatic</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="features">Features:</label>
+        <br>
+        <label for="features">Bluetooth:</label>
+        <input type="checkbox" name="Bluetooth"><br>
+        <label for="features">Back Camera:</label>
+        <input type="checkbox" name="Back_Camera"><br>
+        <label for="features">Leather Seats:</label>
+        <input type="checkbox" name="Leather_Seats"><br>
+        <label for="owner_name">Owner name:</label>
+        <input type="text" name="owner_name" required><br>
+        <label for="owner_email">Owner email:</label>
+        <input type="email" name="owner_email" required><br>
+        <label for="owner_phone">Owner phone:</label>
+        <input type="tel" name="owner_phone" required><br>
+
+        <button type="submit" class="btn btn-primary">Upload</button>
+      </form>
+      <% } else { %>
+        <form action="/creaateRecord" method="Post">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Maker</label>
+              <input type="text" class="form-control" id="inputEmail4" name="maker"
+                placeholder="Toyota,Honda,Ford........">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Model</label>
+              <input type="text" class="form-control" name="model" id="inputPassword4" placeholder="Model">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Manufacture Year</label>
+            <input type="text" name="manufactureYear" class="form-control" id="inputAddress"
+              placeholder="Enter your only eg: 2004.....">
+          </div>
+          <div class="form-group">
+            <label for="inputAddress2">Milaqe</label>
+            <input type="num" class="form-control" name="mileage" id="inputAddress2" placeholder="milage">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="inputCity">Engine Displacement</label>
+              <input type="text" name="engineDisplacement" class="form-control" id="inputCity">
+            </div>
+            <div class="form-group col-md-3">
+              <label for="inputState">Engine Power</label>
+              <input type="text" name="enginePower" class="form-control" id="inputZip">
+
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputZip">Body Type</label>
+              <input type="text" name="bodyType" class="form-control" id="inputZip">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputZip">STK Year</label>
+              <input type="text" name="stkYear" class="form-control" id="inputZip">
+            </div>
+            <div class="form-group col-md-3">
+              <label for="inputState">Transmission</label>
+              <select id="inputState" class="form-control" name="transmission">
+                <option selected>Choose...</option>
+                <option value="Manual">Manual</option>
+                <option value="Automatic">Automatic</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="features">Features:</label>
+          <br>
+          <label for="features">Bluetooth:</label>
+          <input type="checkbox" name="Bluetooth"><br>
+          <label for="features">Back Camera:</label>
+          <input type="checkbox" name="Back_Camera"><br>
+          <label for="features">Leather Seats:</label>
+          <input type="checkbox" name="Leather_Seats"><br>
+          <label for="owner_name">Owner name:</label>
+          <input type="text" name="owner_name" required><br>
+          <label for="owner_email">Owner email:</label>
+          <input type="email" name="owner_email" required><br>
+          <label for="owner_phone">Owner phone:</label>
+          <input type="tel" name="owner_phone" required><br>
+
+          <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+        <% } %>
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+  <%- include('layout/dashfooter') -%>

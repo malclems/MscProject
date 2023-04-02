@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-11/css/all.min.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.13.2/datatables.min.css"/>
+ 
+
+
+<style>
+    table{
+        width: 80vw;
+        max-height: 60vh;
+        border-collapse: collapse;
+        text-align: center;
+        overflow-y: scroll;
+    }
+    td,th{
+        border:2px solid black;
+        width: 7%;
+        height: 2em;
+    }
+    tr:nth-child(even){
+        background-color: aquamarine;
+    }
+</style>
+
+<title><%- title -%></title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+        aria-expanded="false" aria-label="Toggle navigation"></button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="/CreateRecord">Create Record</a>
+            </li> -->
+
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Log Out</a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+    <div class="col-md-12 m-3">
+        <a href="/CreateRecord"><button type="submit">Fill Add Record Manually</button></a>
+      </div>
+
+      <div class="col-md-6 p-4 m-3 bg-secondary">
+        <form action="/csv" method="Post" enctype="multipart/form-data">
+            <input type="file" name="csv" id="" required>
+            <button type="submit">Upload a CSV Data</button>
+        </form>
+        
+      </div>
+
+      
+
+      <% if(message){ %>
+    
+        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong>
+            <%= message.message %>
+        </strong>
+      </div>
+      <% } %>
+    <div class="row">
+        <div class="col-12">
+
+            <% if(cars != ''){ %>
+
+                
+        
+            
+                <table id="dash">
+                    <thead>
+                        <tr class="bg-ligth">
+                            <th>Maker</th>
+                            <th>Model</th>
+                            <th>Manufacture Year</th>
+                            <th>Mileage</th>
+                            <th>Engine Displacement</th>
+                            <th>Engine Power</th>
+                            <th>Body Type</th>
+                            <th>STK Year</th>
+                            <th>Transmission</th>
+                            <th>Features</th>
+                            <th>Owner</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                            <th>View</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% cars.forEach(function(car) { %>
+                        <tr>
+                          <td><%= car.maker %></td>
+                          <td><%= car.model %></td>
+                          <td><%= car.manufacture_year %></td>
+                          <td><%= car.mileage %></td>
+                          <td><%= car.engine_displacement %></td>
+                          <td><%= car.engine_power %></td>
+                          <td><%= car.body_type %></td>
+                          <td><%= car.stk_year %></td>
+                          <td><%= car.transmission %></td>
+                          <td><%= car.other_data.features.join(', ') %></td>
+                          <td><%= car.other_data.owner.name %><br><%= car.other_data.owner.email %><br><%= car.other_data.owner.phone %></td>
+                          <td><a href="/cars/<%= car._id %>/edit">Edit</a></td>
+                          <td><a href="/cars/<%= car._id %>/delete">Delete</a></td>
+                          <td><a href="/cars/<%= car._id %>">View</a></td>
+                        </tr>
+                        <% }); %>
+                      </tbody>
+                </table>
+            
+            
+            <% }else{ %> 
+            
+            
+            <h1 class="text-center text-secondary mt-5"> No Record Found</h1>
+            
+            
+            
+            <% } %>
+
+
+            
+           
+            
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<%- include('layout/dashfooter') -%>
